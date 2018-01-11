@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,8 +16,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Observer {
+
+    private String TAG = "MainActivityLOG";
+    private TextView queryRis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        ModelPezzotto.getInstance().addObservers(this);
 
         final EditText locationIndirizzoText = findViewById(R.id.locationIndirizzoText);
         final EditText locationNameText = findViewById(R.id.locationNameText);
@@ -33,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText cercaText = findViewById(R.id.cercaText);
         Button cercaButton = findViewById(R.id.cercaButton);
-        final TextView queryRis = findViewById(R.id.queryRis);
+        queryRis = findViewById(R.id.queryRis);
 
         final DBClass dbClass = new DBClass();
         inserisciButton.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!TextUtils.isEmpty(cercaText.getText().toString())) {
-                    queryRis.setText(dbClass.risultatoQuery(cercaText.getText().toString()));
+                    Log.d(TAG, "stampo il risultato");
+                    dbClass.risultatoQuery(cercaText.getText().toString());
                 }
             }
         });
@@ -90,5 +98,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        Log.d(TAG, "sono in update");
+        queryRis.setText(ModelPezzotto.getInstance().getRisultato());
     }
 }

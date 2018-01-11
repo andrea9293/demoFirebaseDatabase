@@ -4,7 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\Users\andre\Documents\GitHub\forBob\forBob\app\app.iml" filepath="C:\Users\andre\Documents\GitHub\forBob\forBob\app\app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/demoFirebaseDatabase.iml" filepath="$PROJECT_DIR$/demoFirebaseDatabase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/demoFirebaseDatabase.iml" filepath="$PROJECT_DIR$/.idea/demoFirebaseDatabase.iml" />
+      <module fileurl="file://C:\Users\andre\Documents\GitHub\demoFirebaseDatabase\demoFirebaseDatabase.iml" filepath="C:\Users\andre\Documents\GitHub\demoFirebaseDatabase\demoFirebaseDatabase.iml" />
       <module fileurl="file://C:\Users\andre\Documents\GitHub\forBob\forBob\forBob.iml" filepath="C:\Users\andre\Documents\GitHub\forBob\forBob\forBob.iml" />
     </modules>
   </component>
